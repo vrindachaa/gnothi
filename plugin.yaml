@@ -12,6 +12,11 @@ provides_hooks:
   - post_tool_call
   - transform_llm_output
 config_schema:
+  openrouter_api_key:
+    type: secret
+    env: OPENROUTER_API_KEY
+    required: false
+    description: "Optional OpenRouter key, used only when jev_remote is enabled; resolved through Hermes secret scope."
   automatic_check:
     type: bool
     default: false
