@@ -1,0 +1,26 @@
+name: gnothi
+version: 0.1.0
+description: "Epistemic self-check for quantitative claims with a strict on-demand core plus separately opt-in automatic audit and Jev advisory integrations. Tagline: Hermes, checked."
+author: "gnothi contributors"
+kind: standalone
+requires_hermes: ">=0.21.5"
+provides_tools:
+  - verify_claim
+  - evaluate_difference
+  - qualify_conclusion
+provides_hooks:
+  - post_tool_call
+  - transform_llm_output
+config_schema:
+  automatic_check:
+    type: bool
+    default: false
+    description: "Opt in to narrow local automatic checking; holds response streaming."
+  jev_remote:
+    type: bool
+    default: false
+    description: "Separately consent to sending claim, question, and aggregate evidence to OpenRouter for advisory scoring; charges may apply."
+  decision_model:
+    type: str
+    default: "typesafe/jev-1.14"
+    description: "OpenRouter decision-model identifier used only with jev_remote enabled."
